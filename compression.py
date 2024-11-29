@@ -31,7 +31,7 @@ def reconstitute_message(partial_text, checksum, polynomial_hex, missing_length)
     poly_int = int(polynomial_hex, 16)
     crc_func = crcmod.mkCrcFun(poly_int, initCrc=0, xorOut=0)
     candidate_message = ""
-    charset = string.ascii_letters
+    charset = string.ascii_letters + string.digits
     for candidate in itertools.product(charset, repeat=missing_length):
         candidate_message = partial_text + ''.join(candidate)
         candidate_crc = f"{crc_func(candidate_message.encode('utf-8')):04X}"
