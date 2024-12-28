@@ -103,10 +103,12 @@ def main():
     if decompressed == test_text:
         print("Successfully reconstructed the original text!")
         print(decompressed)
+        with open("decompressed.txt", "w", encoding="utf-8") as f:
+            f.write(decompressed)
     else:
         print("Decompression failed!")
         print("Decompressed text:", decompressed)
-
+        
 
 if __name__ == "__main__":
     main()
